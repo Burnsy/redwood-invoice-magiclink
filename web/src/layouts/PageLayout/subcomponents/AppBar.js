@@ -3,11 +3,14 @@ import { useAuth } from '@redwoodjs/auth'
 import { Text, Flex, Box, Button } from 'src/lib/primitives'
 
 const UserAuthTools = () => {
+  // debugger
   const { loading, authenticated, currentUser, logout } = useAuth()
 
+  console.log({ loading, authenticated, currentUser, logout })
   if (loading) {
     return 'loading...'
   }
+  console.log({ loading, authenticated, currentUser, logout })
 
   if (!authenticated) {
     return null
@@ -15,7 +18,7 @@ const UserAuthTools = () => {
 
   return (
     <>
-      {currentUser.email}
+      {currentUser}
       &nbsp;&nbsp;
       <Button onClick={() => logout({ redirectTo: 'http://localhost:8910/' })}>
         Logout

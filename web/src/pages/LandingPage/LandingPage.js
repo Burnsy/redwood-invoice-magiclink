@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useAuth } from '@redwoodjs/auth'
 import { Redirect, routes } from '@redwoodjs/router'
 
@@ -7,13 +8,19 @@ import exampleInvoice from './exampleInvoice.png'
 
 export default () => {
   const { loading, authenticated, login } = useAuth()
-
+  const [email, setEmail] = useState('')
   if (loading) {
     return null
   }
 
   if (authenticated) {
     return <Redirect to={routes.invoice()} />
+  }
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault()
+
+    login({ email })
   }
 
   return (
@@ -56,19 +63,29 @@ export default () => {
           >
             Billable is an editable template for invoicing your clients
           </Text>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Email Address:
+              <input
+                type="text"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
 
-          <Button
-            onClick={login}
-            css={`
-              height: 44px !important;
-              font-size: 20px !important;
-              background: blue !important;
-              padding: 0 16px !important;
-              color: white !important;
-            `}
-          >
-            Get Started
-          </Button>
+            <Button
+              css={`
+                height: 44px !important;
+                font-size: 20px !important;
+                background: blue !important;
+                padding: 0 16px !important;
+                color: white !important;
+              `}
+              type="submit"
+            >
+              Get Started
+            </Button>
+          </form>
         </Box>
         <Box
           width={0.33}

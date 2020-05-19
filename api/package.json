@@ -3,6 +3,7 @@
   "name": "api",
   "version": "0.0.0",
   "dependencies": {
+    "@magic-sdk/admin": "^1.0.0",
     "@redwoodjs/api": "^0.6.1-canary.40"
   }
 }
