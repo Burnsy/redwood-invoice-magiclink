@@ -1,4 +1,4 @@
-# Invoice
+# Invoice With Magic Links
 
 This is an example Redwood app, implementing a very minimal invoice application.
 Features you can see in action here:
