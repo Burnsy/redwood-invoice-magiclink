@@ -7,20 +7,20 @@ import { Text, Flex, Box, Button } from 'src/lib/primitives'
 import exampleInvoice from './exampleInvoice.png'
 
 export default () => {
-  const { loading, authenticated, login } = useAuth()
+  const { loading, isAuthenticated, logIn } = useAuth()
   const [email, setEmail] = useState('')
   if (loading) {
     return null
   }
 
-  if (authenticated) {
+  if (isAuthenticated) {
     return <Redirect to={routes.invoice()} />
   }
 
   const handleSubmit = (evt) => {
     evt.preventDefault()
 
-    login({ email })
+    logIn({ email })
   }
 
   return (
